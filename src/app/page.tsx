@@ -1,8 +1,10 @@
 export default function HomePage() {
   return (
     <main>
-      <h1>Food Delivery</h1>
-      <p>Discover delicious recipes and meals.</p>
+      <section>
+        <h1>Discover delicious food near you</h1>
+        <p>Order your favorite meals with Foodly.</p>
+      </section>
     </main>
   );
 }

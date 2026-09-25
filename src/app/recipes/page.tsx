@@ -1,8 +1,10 @@
 export default function RecipesPage() {
   return (
     <main>
-      <h1>Recipes</h1>
-      <p>Explore our recipes.</p>
+      <section>
+        <h1>Explore Recipes</h1>
+        <p>Find something delicious to eat.</p>
+      </section>
     </main>
   );
 }
