@@ -12,16 +12,31 @@ export default function RecipeExplorer({
   recipes,
 }: RecipeExplorerProps) {
   const [search, setSearch] = useState("");
+  const [selectedCuisine, setSelectedCuisine] = useState("All");
+
+  const cuisines = useMemo(() => {
+    return [
+      "All",
+      ...Array.from(new Set(recipes.map((recipe) => recipe.cuisine))),
+    ];
+  }, [recipes]);
 
   const filteredRecipes = useMemo(() => {
-    return recipes.filter((recipe) =>
-      recipe.name.toLowerCase().includes(search.toLowerCase())
-    );
-  }, [recipes, search]);
+    return recipes.filter((recipe) => {
+      const matchesSearch = recipe.name
+        .toLowerCase()
+        .includes(search.toLowerCase());
+
+      const matchesCuisine =
+        selectedCuisine === "All" ||
+        recipe.cuisine === selectedCuisine;
+
+      return matchesSearch && matchesCuisine;
+    });
+  }, [recipes, search, selectedCuisine]);
 
   return (
     <div>
-      {/* Search */}
       <div className="recipe-search">
         <input
           type="text"
@@ -31,12 +46,27 @@ export default function RecipeExplorer({
         />
       </div>
 
-      {/* Result count */}
+      <div className="cuisine-filters">
+        {cuisines.map((cuisine) => (
+          <button
+            key={cuisine}
+            type="button"
+            className={
+              selectedCuisine === cuisine
+                ? "cuisine-filter active"
+                : "cuisine-filter"
+            }
+            onClick={() => setSelectedCuisine(cuisine)}
+          >
+            {cuisine}
+          </button>
+        ))}
+      </div>
+
       <p>
         Showing {filteredRecipes.length} of {recipes.length} recipes
       </p>
 
-      {/* Recipes */}
       <div className="recipe-grid">
         {filteredRecipes.map((recipe) => (
           <Link
