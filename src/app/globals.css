@@ -219,3 +219,22 @@ p {
     height: 350px;
   }
 }
+.recipe-search {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 32px;
+}
+
+.recipe-search input {
+  width: 100%;
+  padding: 16px 20px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  font-size: 16px;
+  outline: none;
+}
+
+.recipe-search input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
+}
