@@ -266,3 +266,108 @@ p {
   border-color: var(--primary);
   color: white;
 }
+
+/* Recipe skeleton */
+
+.skeleton-card {
+  pointer-events: none;
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    #e8f3eb 25%,
+    #f4faf5 50%,
+    #e8f3eb 75%
+  );
+
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 8px;
+}
+
+.skeleton-image {
+  width: 100%;
+  height: 210px;
+  border-radius: 0;
+}
+
+.skeleton-title {
+  height: 20px;
+  width: 80%;
+  margin-bottom: 16px;
+}
+
+.skeleton-text {
+  height: 14px;
+  width: 55%;
+  margin-bottom: 16px;
+}
+
+.skeleton-badge {
+  height: 26px;
+  width: 75px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+  }
+}
+
+/* Error page */
+
+.error-page {
+  min-height: 65vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.error-content {
+  max-width: 480px;
+  text-align: center;
+}
+
+.error-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 24px;
+  border-radius: 50%;
+  background: #fef2f2;
+  color: #dc2626;
+  display: grid;
+  place-items: center;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.error-content h1 {
+  font-size: 30px;
+}
+
+.retry-button {
+  margin-top: 24px;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 10px;
+  background: var(--primary);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.retry-button:hover {
+  background: var(--primary-dark);
+}
